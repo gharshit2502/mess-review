@@ -1,6 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Mess Feedback Form</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h2>Mess Review</h2>
+  <form id="reviewForm">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="tel" name="phone" placeholder="Phone Number" required />
+    <select name="meal" required>
+      <option value="">Select Meal</option>
+      <option>Breakfast</option>
+      <option>Lunch</option>
+      <option>Snack</option>
+      <option>Dinner</option>
+    </select>
+    <input type="number" name="rating" placeholder="Rating (1–5)" min="1" max="5" required />
+    <textarea name="comment" placeholder="Write a comment (optional)"></textarea>
+    <button type="submit">Submit Review</button>
+  </form>
+
+  <p id="status"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
   <title>Mess Review</title>
   <style>
     body { font-family: Arial; max-width: 500px; margin: auto; padding: 20px; }
@@ -45,4 +106,4 @@
     });
   </script>
 </body>
-</html>
+</html> -->
