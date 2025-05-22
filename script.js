@@ -9,7 +9,7 @@ document.getElementById('reviewForm').addEventListener('submit', function(e) {
     method: 'POST',
     body: formData
   })
-  .then(response => {
+  .then(() => {
     document.getElementById('status').textContent = '✅ Review Submitted!';
     form.reset();
   })
