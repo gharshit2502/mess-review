@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mess Review</title>
+  <style>
+    body { font-family: Arial; max-width: 500px; margin: auto; padding: 20px; }
+    input, select, textarea { width: 100%; margin-bottom: 10px; padding: 8px; }
+    button { padding: 10px 15px; background: #28a745; color: white; border: none; }
+  </style>
+</head>
+<body>
+  <h2>Mess Review Form</h2>
+  <form id="reviewForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+    <select name="meal" required>
+      <option value="">Select Meal</option>
+      <option>Breakfast</option>
+      <option>Lunch</option>
+      <option>Snack</option>
+      <option>Dinner</option>
+    </select>
+    <input type="number" name="rating" placeholder="Rating (1-5)" min="1" max="5" required>
+    <textarea name="comment" placeholder="Comment (optional)"></textarea>
+    <button type="submit">Submit Review</button>
+  </form>
+  <p id="status"></p>
+  <script>
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(this).entries());
+      fetch('https://script.google.com/macros/s/AKfycbwQJgf1uJLuM3tECzvpwgABVVxjZNHUxzComnkQptAvnRBRa0NOsrvEvHNUfB8xtuG0ew/exec', {
+
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        document.getElementById('status').textContent = '✅ Submitted!';
+        this.reset();
+      })
+      .catch(() => {
+        document.getElementById('status').textContent = '⚠️ Submission failed.';
+      });
+    });
+  </script>
+</body>
+</html>
