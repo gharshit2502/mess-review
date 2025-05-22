@@ -1,116 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Mess Review Form</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-  <h2>Mess Review</h2>
-  
-  <form id="reviewForm">
-    <input type="text" name="name" placeholder="Your Name" required />
-    <input type="tel" name="phone" placeholder="Phone Number" required />
-    
-    <select name="meal" required>
-      <option value="">Select Meal</option>
-      <option>Breakfast</option>
-      <option>Lunch</option>
-      <option>Snack</option>
-      <option>Dinner</option>
-    </select>
-    
-    <input type="number" name="rating" placeholder="Rating (1–5)" min="1" max="5" required />
-    
-    <textarea name="comment" placeholder="Comments (optional)"></textarea>
-    
-    <button type="submit">Submit Review</button>
-  </form>
-
-  <p id="status"></p>
-
-  <script src="script.js"></script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <title>Mess Review</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>HTML FORM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body { font-family: Arial; max-width: 500px; margin: auto; padding: 20px; }
-    input, select, textarea { width: 100%; margin-bottom: 10px; padding: 8px; }
-    button { padding: 10px 15px; background: #28a745; color: white; border: none; }
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+    body {
+      background-color: aquamarine;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .main {
+      flex-basis: 400px;
+      background-color: azure;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .main h3 {
+      font-size: 35px;
+      margin-bottom: 20px;
+    }
+    .form-outer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .form-outer label {
+      font-weight: bold;
+    }
+    .form-outer input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .form-outer button {
+      background-color: #008CBA;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <h2>Mess Review Form</h2>
-  <form id="reviewForm">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="tel" name="phone" placeholder="Phone Number" required>
-    <select name="meal" required>
-      <option value="">Select Meal</option>
-      <option>Breakfast</option>
-      <option>Lunch</option>
-      <option>Snack</option>
-      <option>Dinner</option>
-    </select>
-    <input type="number" name="rating" placeholder="Rating (1-5)" min="1" max="5" required>
-    <textarea name="comment" placeholder="Comment (optional)"></textarea>
-    <button type="submit">Submit Review</button>
-  </form>
-  <p id="status"></p>
-  <script>
-    document.getElementById('reviewForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(this).entries());
-      fetch('https://script.google.com/macros/s/AKfycbwQJgf1uJLuM3tECzvpwgABVVxjZNHUxzComnkQptAvnRBRa0NOsrvEvHNUfB8xtuG0ew/exec', {
+  <div class="main">
+    <h3>"जेवन झाला का"</h3>
 
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+    <form method="post" id="form">
+      <!-- form options name fieldsa -->
+
+      <div class="form-outer">
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Enter your name" required />
+      </div>
+      <div class="form-outer">
+        <label>Phone Number</label>
+        <input type="number" name="phone_number" placeholder="Enter your Phone number" required />
+      </div>
+       <div class="form-outer">
+  <label>Hostel Wing</label>
+<div style="display: flex; gap: 15px; align-items: center;">
+  <label><input type="radio" name="hostel" value="Boys" required /> Boys</label>
+  <label><input type="radio" name="hostel" value="Girls" /> Girls</label>
+</div>
+
+</div>
+
+<div class="form-outer">
+  <label for="rating">Rating (0 to 10): <span id="ratingValue">5</span></label>
+  <input 
+    type="range" 
+    id="rating" 
+    name="rating" 
+    min="0" 
+    max="10" 
+    value="5" 
+    oninput="
+  document.getElementById('ratingValue').innerText = this.value; 
+  let val = +this.value;
+  let text = (val <= 3) ? 'Poor' : (val <= 7) ? 'Good' : 'Tasty!';
+  document.getElementById('ratingText').innerText = text;
+"
+
+  />
+  <div id="ratingText" style="margin-top:5px; font-weight:bold;">Good</div>
+  <div style="margin-top:5px; font-size: 14px; color: #555; display: flex; justify-content: space-between;">
+  <span>0 = Poor</span>
+  <span>5 = Good</span>
+  <span>10 = Tasty!</span>
+</div>
+
+</div>
+
+
+<div class="form-outer" style="display: flex; flex-direction: column; gap: 8px;">
+  <label style="font-weight: 600; font-size: 16px; color: #333;">Your Review!</label>
+  <textarea 
+    name="description" 
+    rows="4" 
+    placeholder="Review here..." 
+    style="
+      padding: 12px; 
+      border: 1.8px solid #007BFF; 
+      border-radius: 8px; 
+      font-size: 14px; 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      resize: vertical; 
+      transition: border-color 0.3s ease;
+    "
+    onfocus="this.style.borderColor='#0056b3';" 
+    onblur="this.style.borderColor='#007BFF';"
+  ></textarea>
+</div>
+
+
+      <div class="form-outer">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const url = "https://script.google.com/macros/s/AKfycbzBQsMdD_DDpmkvzddXtt_e2r0aC7XA9i6XBRpiYnhKIxktIZIym3dfHUiYv9sv452M4A/exec";
+    const form = document.querySelector("#form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      fetch(url, {
+        method: "POST",
+        body: data
       })
-      .then(() => {
-        document.getElementById('status').textContent = '✅ Submitted!';
-        this.reset();
-      })
-      .catch(() => {
-        document.getElementById('status').textContent = '⚠️ Submission failed.';
-      });
+        .then((res) => res.text())
+        .then((result) => {
+          alert("Form submitted successfully!");
+          form.reset();
+        })
+        .catch((err) => alert("Error: " + err));
     });
   </script>
 </body>
-</html> -->
+</html>
