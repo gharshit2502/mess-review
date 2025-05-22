@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Mess Feedback Form</title>
+  <meta charset="UTF-8" />
+  <title>Mess Review Form</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <h2>Mess Review</h2>
+  
   <form id="reviewForm">
     <input type="text" name="name" placeholder="Your Name" required />
     <input type="tel" name="phone" placeholder="Phone Number" required />
+    
     <select name="meal" required>
       <option value="">Select Meal</option>
       <option>Breakfast</option>
@@ -17,8 +20,11 @@
       <option>Snack</option>
       <option>Dinner</option>
     </select>
+    
     <input type="number" name="rating" placeholder="Rating (1–5)" min="1" max="5" required />
-    <textarea name="comment" placeholder="Write a comment (optional)"></textarea>
+    
+    <textarea name="comment" placeholder="Comments (optional)"></textarea>
+    
     <button type="submit">Submit Review</button>
   </form>
 
@@ -27,6 +33,7 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
