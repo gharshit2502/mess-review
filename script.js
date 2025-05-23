@@ -1,16 +1,54 @@
- const url = "https://script.google.com/macros/s/AKfycbzBQsMdD_DDpmkvzddXtt_e2r0aC7XA9i6XBRpiYnhKIxktIZIym3dfHUiYv9sv452M4A/exec";
-    const form = document.querySelector("#form");
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      fetch(url, {
-        method: "POST",
-        body: data
-      })
-        .then((res) => res.text())
-        .then((result) => {
-          alert("Response submitted !");
-          form.reset();
-        })
-        .catch((err) => alert("Error: " + err));
+const url = "https://script.google.com/macros/s/AKfycbywte99ATDcbAAJsnr2TwX9ghKhwVWXRsFQmXyp-cBtVIc3QjpqGuwT7mMPMYwMLgYpWw/exec";
+const form = document.querySelector("#form");
+const submitBtn = document.getElementById("submitBtn");
+const loader = document.getElementById("loader");
+
+// Slider live-update logic
+const ratingInput     = document.getElementById("rating");
+const ratingValueSpan = document.getElementById("ratingValue");
+const ratingTextDiv   = document.getElementById("ratingText");
+
+ratingInput.addEventListener("input", () => {
+  const val = +ratingInput.value;
+  ratingValueSpan.innerText = val;
+  const text = (val <= 3)
+    ? "Poor"
+    : (val <= 7)
+      ? "Good"
+      : "Tasty!";
+  ratingTextDiv.innerText = text;
+});
+
+// Form submission logic
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  submitBtn.disabled = true;
+  loader.style.display = "inline-block";
+
+  const data = new FormData(form);
+
+  fetch(url, {
+    method: "POST",
+    body: data,
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error("Network response was not ok");
+      return res.text();
+    })
+    .then(() => {
+      alert("Form submitted successfully!");
+      form.reset();
+      // reset slider UI
+      ratingInput.value = 5;
+      ratingValueSpan.innerText = "5";
+      ratingTextDiv.innerText = "Good";
+    })
+    .catch((err) => {
+      console.error("Submission error:", err);
+      alert("Error: " + err.message);
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      loader.style.display = "none";
     });
+});
