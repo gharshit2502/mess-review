@@ -27,39 +27,43 @@
       <div class="form-outer">
         <label>Hostel Wing <span class="required">*</span></label>
         <div class="radio-group">
-          <label><input type="radio" name="hostel" value="Boys" required /> Boys</label>
-          <label><input type="radio" name="hostel" value="Girls" /> Girls</label>
+          <label><input type="radio" name="hostel" value="Boys" required /> Boys &#128102;</label>
+          <label><input type="radio" name="hostel" value="Girls" /> Girls &#128103;</label>
         </div>
       </div>
 
       <div class="form-outer">
   <label>Meal Type <span style="color: red;">*</span></label>
   <div class="radio-grid">
-    <label><input type="radio" name="mealType" value="Breakfast" required><span>Breakfast</span></label>
-    <label><input type="radio" name="mealType" value="Lunch"><span>Lunch</span></label>
-    <label><input type="radio" name="mealType" value="Snack"><span>Snack</span></label>
-    <label><input type="radio" name="mealType" value="Dinner"><span>Dinner</span></label>
+    <label><input type="radio" name="mealType" value="Breakfast" required><span>Breakfast &#127749;</span></label>
+    <label><input type="radio" name="mealType" value="Lunch"><span>Lunch &#127774;</span></label>
+    <label><input type="radio" name="mealType" value="Snack"><span>Snack &#127751;</span></label>
+    <label><input type="radio" name="mealType" value="Dinner"><span>Dinner &#127771;</span></label>
   </div>
 </div>
 
 
       <div class="form-outer">
-        <label for="rating">Rating (0 to 10): <span id="ratingValue">5</span></label>
-        <input
-          type="range"
-          id="rating"
-          name="rating"
-          min="0"
-          max="10"
-          value="5"
-        />
-        <div id="ratingText" class="rating-text">Good</div>
-        <div class="rating-legend">
-          <span>0 = Poor</span>
-          <span>5 = Good</span>
-          <span>10 = Tasty!</span>
-        </div>
-      </div>
+  <label for="rating">Rating (0-10):
+    <span id="ratingValue">5</span>
+    <span id="ratingText" class="rating-text">Good</span>
+  </label>
+  <div class="rating-legend">
+    <span>0 = Poor</span>
+    <span>5 = Good</span>
+    <span>10 = Tasty!</span>
+  </div>
+</div>
+<input
+  type="range"
+  id="rating"
+  name="rating"
+  min="0"
+  max="10"
+  value="5"
+/>
+
+       
 
       <div class="form-outer">
         <label>Your Review!</label>
