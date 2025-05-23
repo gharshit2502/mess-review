@@ -153,6 +153,36 @@ footer img {
   height: 18px;
 }
 
+/* Container for message and links */
+.footer-container {
+  text-align: center;
+  padding: 10px;
+}
+
+/* Message line: force no wrapping */
+.footer-message {
+  white-space: nowrap;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* Social links container - inline links */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* On wider screens, all can be inline if needed */
+@media (min-width: 481px) {
+  .footer-message {
+    white-space: normal;
+  }
+  .social-links {
+    justify-content: flex-start;
+  }
+}
+
 
 .radio-grid {
   display: grid;
