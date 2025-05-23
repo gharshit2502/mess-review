@@ -1,27 +1,16 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwQJgf1uJLuM3tECzvpwgABVVxjZNHUxzComnkQptAvnRBRa0NOsrvEvHNUfB8xtuG0ew/exec';
-
-const form = document.getElementById('reviewForm');
-const status = document.getElementById('status');
-
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  
-  const formData = new FormData(form);
-
-  fetch(scriptURL, {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => {
-    if (response.ok) {
-      status.textContent = "✅ Review Submitted!";
-      form.reset();
-    } else {
-      throw new Error("Network response was not ok.");
-    }
-  })
-  .catch(error => {
-    console.error("Error:", error);
-    status.textContent = "⚠️ Submission failed.";
-  });
-});
+ const url = "https://script.google.com/macros/s/AKfycbzBQsMdD_DDpmkvzddXtt_e2r0aC7XA9i6XBRpiYnhKIxktIZIym3dfHUiYv9sv452M4A/exec";
+    const form = document.querySelector("#form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      fetch(url, {
+        method: "POST",
+        body: data
+      })
+        .then((res) => res.text())
+        .then((result) => {
+          alert("Response submitted !");
+          form.reset();
+        })
+        .catch((err) => alert("Error: " + err));
+    });
