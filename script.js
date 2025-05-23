@@ -1,4 +1,4 @@
-const url = "https://script.google.com/macros/s/AKfycbywte99ATDcbAAJsnr2TwX9ghKhwVWXRsFQmXyp-cBtVIc3QjpqGuwT7mMPMYwMLgYpWw/exec";
+const url = "https://script.google.com/macros/s/AKfycbx8YXFH7crHLncbJf7wnC-eAKsWzFoEhcs6V759srnM6LM05Wm0x8Js-Z5WTECnY8S7EA/exec";
 const form = document.querySelector("#form");
 const submitBtn = document.getElementById("submitBtn");
 const loader = document.getElementById("loader");
@@ -18,7 +18,8 @@ ratingInput.addEventListener("input", () => {
       : "Tasty!";
   ratingTextDiv.innerText = text;
 });
-
+const mealType = document.querySelector('input[name="mealType"]:checked')?.value;
+  console.log("Selected Meal Type:", mealType);
 // Form submission logic
 form.addEventListener("submit", (e) => {
   e.preventDefault();

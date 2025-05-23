@@ -33,6 +33,17 @@
       </div>
 
       <div class="form-outer">
+  <label>Meal Type <span style="color: red;">*</span></label>
+  <div class="radio-grid">
+    <label><input type="radio" name="mealType" value="Breakfast" required><span>Breakfast</span></label>
+    <label><input type="radio" name="mealType" value="Lunch"><span>Lunch</span></label>
+    <label><input type="radio" name="mealType" value="Snack"><span>Snack</span></label>
+    <label><input type="radio" name="mealType" value="Dinner"><span>Dinner</span></label>
+  </div>
+</div>
+
+
+      <div class="form-outer">
         <label for="rating">Rating (0 to 10): <span id="ratingValue">5</span></label>
         <input
           type="range"
